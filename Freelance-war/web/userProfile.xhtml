@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="main.xhtml">
+
+        <ui:define name="content">
+            <h2> </h2>
+
+
+            <p:messages/>
+
+
+            <h:form id="userDetailsForm" class="form-horizontal" >
+                <div class="panel panel-info">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">User Details
+
+                        <div class="pull-right">
+                            <h:commandButton id="edit" action="#{userProfile.editUserDetail()}" value=" Edit " class="btn btn-primary btn-sm" /> 
+                            <!-- <a href="editUserProfile.xhtml"><span class="glyphicon glyphicon-pencil" ></span> Edit</a>-->
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+
+
+
+                        <div class="form-group">
+                            <p:outputLabel value="First Name:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p class="form-control-static">#{userProfile.userDetails.firstname}</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Last Name:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p class="form-control-static">#{userProfile.userDetails.lastname}</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Skills:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p class="form-control-static">#{userProfile.userDetails.skills}</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Message:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p class="form-control-static">#{userProfile.userDetails.message}</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Amount:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p class="form-control-static">#{userProfile.userDetails.amount}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition> 
+</html>

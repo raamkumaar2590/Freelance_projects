@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <style>
+        .ui-widget-content{
+            border: 0px !important;
+
+        }    
+    </style>
+
+
+    <ui:composition template="main.xhtml">
+
+        <ui:define name="content">
+            <h2> </h2>
+            <h:form id="dashForm">
+                
+                    <p:messages/>
+                    
+                <div class="row">
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <h:inputText  value="#{freelancedashboard.keyword}" styleClass="form-control" />
+                        <span class="input-group-btn">
+                            <p:commandButton style="align-items: flex-start" update="dashpanel" value="Search" styleClass="btn btn-primary" action="#{freelancedashboard.retrievelanceDashboardDataByKeyword()}"/>  
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+
+
+
+                <p:panel id="dashpanel">   
+                    <h:dataTable id="dashTable" value="#{freelancedashboard.dashBoardData}" var="data"
+                                 styleClass="table table-bordered table-striped tableOutput"
+                                 >
+
+                        <h:column>
+                            <!-- column header -->
+                            <f:facet name="header">Title</f:facet>
+                            <!-- row record -->
+                            #{data.title}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">By</f:facet>
+                                #{data.towards}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Amount</f:facet>
+                                #{data.amount}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Action</f:facet>
+                            <p:commandButton  id="iconOnly" update="dashForm,dashForm:dashpanel" action="#{freelancedashboard.updateAction(data.status,data.id)}"  style="margin-right:20px;"  value="#{data.status}" title="action" >
+                                
+                            </p:commandButton>    
+                        </h:column>
+
+                    </h:dataTable>
+                </p:panel>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

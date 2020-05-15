@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="main.xhtml">
+
+        <ui:define name="content">
+            <h2> </h2>
+
+
+
+            <div class="panel panel-info">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+
+                    Edit User Details
+                    <div class="pull-right">
+                        <a href="userProfile.xhtml"><span class="glyphicon glyphicon-arrow-left" ></span> Back</a>
+                    </div>
+
+
+                </div>
+                <div class="panel-body">
+
+
+                    <h:form id="edituserDetailsForm" class="form-horizontal" >
+                        
+                    <p:messages/>
+
+                        <div class="form-group">
+                            <p:outputLabel value="First Name:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p:inputText  id="fName" value="#{editUser.firstname}" required="true" requiredMessage="provide valid firstname "/>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Last Name:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p:inputText id="lastName" value="#{editUser.lastname}" immediate="true"/>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Skills:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p:inputText id="skills" value="#{editUser.skills}" required="true" requiredMessage="Provide valid skills" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Message:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p:inputText id="msg"  value="#{editUser.message}" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel value="Amount:" class="col-sm-2 control-label"/>
+
+                            <div class="col-sm-10">
+                                <p:inputText id="amount" value="#{editUser.amount}" required="true" requiredMessage="Provide valid amount" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <h:commandButton value="Save" id="ajax1" action="#{userProfile.updateUserDetails(editUser)}" style="margin-right:20px;" styleClass="btn btn-default" >
+                                 <f:ajax execute="@form" render="@form" />
+                                </h:commandButton>   
+        
+                            </div>
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+            
+        </ui:define>
+    </ui:composition> 
+</html>
